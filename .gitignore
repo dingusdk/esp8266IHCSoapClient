@@ -1,0 +1,15 @@
+/XmlTest
+/examples/GetValue/Debug
+/examples/GetValue/__vm
+/examples/GetValue/.vs
+/examples/GetValue/GetValue.vcxproj.filters
+/examples/GetValue/GetValue.vcxproj
+/examples/GetValue/getvalue.sln
+/examples/SetValue/SetValue.vcxproj
+/examples/SetValue/SetValue.vcxproj.filters
+/examples/SetValue/.vs
+/examples/SetValue/__vm
+/examples/SetValue/Debug
+/examples/SetValue/SetValue.sln
+/examples/mysettings.h
+/doxygen
