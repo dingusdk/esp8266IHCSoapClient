@@ -88,7 +88,10 @@ bool IHCSoapClientClass::GetRuntimeValueBool(int resourceid) {
 	BeginRequest("/ws/ResourceInteractionService", "\"getResourceValue\"");
 	int code = m_Http.POST(buffer);
 	// We have an error
-	if (code != 200) return false;
+	if (code != 200) {
+		free(buffer);
+		return false;
+	}
 	m_Cookie = m_Http.header("set-cookie");
 	m_Http.writeToBuffer(buffer, size);
 	m_Http.end();
@@ -108,7 +111,10 @@ int IHCSoapClientClass::GetRuntimeValueInt(int resourceid) {
 	BeginRequest("/ws/ResourceInteractionService", "\"getResourceValue\"");
 	int code = m_Http.POST(buffer);
 	// We have an error
-	if (code != 200) return false;
+	if (code != 200) {
+		free(buffer);
+		return false;
+	}
 	m_Cookie = m_Http.header("set-cookie");
 	m_Http.writeToBuffer(buffer, size);
 	m_Http.end();
@@ -128,7 +134,10 @@ float IHCSoapClientClass::GetRuntimeValueFloat(int resourceid) {
 	BeginRequest("/ws/ResourceInteractionService", "\"getResourceValue\"");
 	int code = m_Http.POST(buffer);
 	// We have an error
-	if (code != 200) return false;
+	if (code != 200) {
+		free(buffer);
+		return false;
+	}
 	m_Cookie = m_Http.header("set-cookie");
 	m_Http.writeToBuffer(buffer, size);
 	m_Http.end();
