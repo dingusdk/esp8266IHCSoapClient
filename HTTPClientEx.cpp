@@ -44,7 +44,7 @@ int HTTPClientEx::sendRequestEx(const char * type, uint8_t * payload, size_t siz
 
 	// send Payload if needed
 	if (payload && size > 0) {
-		if (_tcp->write(&payload[0], size) != size) {
+		if ( _client->write(&payload[0], size) != size) {
 			return returnError(HTTPC_ERROR_SEND_PAYLOAD_FAILED);
 		}
 	}
@@ -56,7 +56,7 @@ int HTTPClientEx::handleHeaderResponseEx() {
 	if (!connected()) {
 		return HTTPC_ERROR_NOT_CONNECTED;
 	}
-	if (_tcp->available() <= 0) return 0;
+	if (_client->available() <= 0) return 0;
 	return handleHeaderResponse();
 }
 
@@ -65,15 +65,15 @@ int HTTPClientEx::writeToBuffer(char* buffer, int size) {
 
 	int pos = 0;
 	while (connected() && pos < size - 1) {
-		size_t sizeAvailable = _tcp->available();
+		size_t sizeAvailable = _client->available();
 		if (sizeAvailable == 0) {
 			delay(10);
-			sizeAvailable = _tcp->available();
+			sizeAvailable = _client->available();
 			if (sizeAvailable == 0)
 				break;
 		}
 		if (sizeAvailable >= size - pos) return -1;
-		int bytesRead = _tcp->readBytes(buffer + pos, sizeAvailable);
+		int bytesRead = _client->readBytes(buffer + pos, sizeAvailable);
 		pos += bytesRead;
 	}
 	buffer[pos] = 0;

@@ -19,7 +19,7 @@ along with IHCSoapClient.If not, see <http://www.gnu.org/licenses/>.
 #ifndef _httpclientex_h
 #define _httpclientex_h
 
-#include "ESP8266HTTPClient.h"
+#include <ESP8266HTTPClient.h>
 
 /*!
 Add the functionallity to do long polling requests with HTTPClient
